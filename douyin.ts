@@ -68,10 +68,10 @@ async function doGet(url: string): Promise<Response> {
 // 提取图片链接列表
 async function parseImgList(body: string): Promise<string[]> {
   const content = body.replace(/\u002F/g, "/").replace(/\\/g, '/')
-  const reg = /{"uri":"[^\s"]+","url_list":["(https:\/\/p\d{1,2}-sign\.douyinpic\.com\/.*?)"/g;
+  const reg = /{"uri":"[^\s"]+","url_list":\["(https:\/\/p\d{1,2}-sign\.douyinpic\.com\/.*?)"/g;
   const urlRet = /"uri":"([^\s"]+)","url_list":/g;
   let imgMatch;
-  const firstUrls: string[] = [];
+  const firstUrls = [];
   while ((imgMatch = reg.exec(content)) !== null) {
     firstUrls.push(imgMatch[1]);
   }
